@@ -1,0 +1,21 @@
+
+  .layout {
+    height: 100vh;
+    :global {
+      .title {
+        height: 32px;
+        line-height: 32px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 16px 10px;
+        text-align: center;
+        color: #fff;
+      }
+      .site-layout-background {
+        background: #fff;
+      }
+      .ant-layout-header {
+        padding-left: 20px!important;
+      }
+    }
+  }
+  
