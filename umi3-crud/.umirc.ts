@@ -5,7 +5,24 @@ export default defineConfig({
     type: 'none',
   },
   routes: [
-    { path: '/', component: '@/layout/index' },
+    { 
+      path: '/',
+      component: '@/layout/index',
+      routes: [
+        {
+          path: '/',
+          redirect: '/course'
+        },
+        {
+          path: '/course',
+          component: '@/pages/Course/index'
+        },
+        {
+          path: '/about',
+          component: '@/pages/About/index'
+        }
+      ] 
+    },
   ],
   cssModulesTypescriptLoader: {}
 });

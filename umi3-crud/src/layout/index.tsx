@@ -7,11 +7,12 @@ import {
     FileOutlined,
     TeamOutlined
   } from '@ant-design/icons';
-import { Link } from 'umi'
+import { Link, useHistory } from 'umi'
   
 const { Header, Sider, Content } = Layout;
 
-const LayoutFrame = () => {
+const LayoutFrame = (props: {children: React.ReactNode}) => {
+  const { location } = useHistory()
     const [ collapsed, setCollapsed ] = useState(false)
 
     const toggle = () => {
@@ -20,13 +21,13 @@ const LayoutFrame = () => {
 
     return (
         <Layout className={styles.layout}>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Sider trigger={null} breakpoint="lg" collapsedWidth="0" collapsible collapsed={collapsed}>
           <div className="title" >管理系统</div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={<FileOutlined />}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname]}>
+            <Menu.Item key="/course" icon={<FileOutlined />}>
               <Link to='/course'>课程记录</Link> 
             </Menu.Item>
-            <Menu.Item key="2" icon={<TeamOutlined />}>
+            <Menu.Item key="/about" icon={<TeamOutlined />}>
             <Link to='/about'>关于我们</Link> 
             </Menu.Item>
           </Menu>
@@ -38,7 +39,7 @@ const LayoutFrame = () => {
               onClick: toggle,
             })}
             <Breadcrumb style={{ margin: ' 10px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>{location.pathname}</Breadcrumb.Item>
             </Breadcrumb>
           </Header>
           <Content
@@ -50,7 +51,7 @@ const LayoutFrame = () => {
             }}
           >
             
-            Content
+            {props.children}
           </Content>
         </Layout>
       </Layout>
