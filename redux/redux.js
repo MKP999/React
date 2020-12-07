@@ -12,7 +12,7 @@ function myreducer(state = initState, action) {
         case 'ADD_TODO':
             return {
                 ...state,
-                posts: [...state.todos, action.todo]
+                todos: [...state.todos, action.todo]
             }
     
         case 'ADD_POST':

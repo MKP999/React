@@ -1,0 +1,29 @@
+
+.game-area {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 50px auto;
+  border: 2px solid #333333
+}
+
+.snake-dots {
+  position: absolute;
+  outline: 1px solid #333;
+  background: black;
+  width: 2%;
+  height: 2%;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.food {
+  position: absolute;
+  outline: 1px solid #333;
+  background: red;
+  width: 2%;
+  height: 2%;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
