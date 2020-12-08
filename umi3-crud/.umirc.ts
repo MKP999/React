@@ -1,28 +1,14 @@
 import { defineConfig } from 'umi';
+import { routes } from './src/router/index'
 
 export default defineConfig({
+  title: 'umi3-Ts后台',
+  history: {
+    type: 'hash',
+  },
   nodeModulesTransform: {
     type: 'none',
   },
-  routes: [
-    { 
-      path: '/',
-      component: '@/layout/index',
-      routes: [
-        {
-          path: '/',
-          redirect: '/course'
-        },
-        {
-          path: '/course',
-          component: '@/pages/Course/index'
-        },
-        {
-          path: '/about',
-          component: '@/pages/About/index'
-        }
-      ] 
-    },
-  ],
+  routes,
   cssModulesTypescriptLoader: {}
 });

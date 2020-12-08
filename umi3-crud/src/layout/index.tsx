@@ -12,23 +12,29 @@ import { Link, useHistory } from 'umi'
 const { Header, Sider, Content } = Layout;
 
 const LayoutFrame = (props: {children: React.ReactNode}) => {
-  const { location } = useHistory()
+    const { location } = useHistory()
     const [ collapsed, setCollapsed ] = useState(false)
 
+    // 切换侧边导航栏
     const toggle = () => {
         setCollapsed(!collapsed)
+    }
+
+    // 设置高亮侧边栏
+    const setSiderHigh = (pathname: string) => {
+        return `/${pathname.split('/')[1]}`
     }
 
     return (
         <Layout className={styles.layout}>
         <Sider trigger={null} breakpoint="lg" collapsedWidth="0" collapsible collapsed={collapsed}>
           <div className="title" >管理系统</div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname]}>
+          <Menu theme="dark" mode="inline" selectedKeys={[setSiderHigh(location.pathname)]}>
             <Menu.Item key="/course" icon={<FileOutlined />}>
-              <Link to='/course'>课程记录</Link> 
+                <Link to='/course'>课程记录</Link> 
             </Menu.Item>
             <Menu.Item key="/about" icon={<TeamOutlined />}>
-            <Link to='/about'>关于我们</Link> 
+                <Link to='/about'>关于我们</Link> 
             </Menu.Item>
           </Menu>
         </Sider>
